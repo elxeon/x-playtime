@@ -240,11 +240,13 @@ end
 
 RegisterNetEvent("x-playtime:weapondetection")
 AddEventHandler("x-playtime:weapondetection", function()
+	local src = source
+	local xPlayer  = ESX.GetPlayerFromId(src)
 	local result = StartFindKvp('x-playtime:PlayTime:'..steam)
 	if result ~= SecondsToClock(Config.weapondetection) then 
 		xPlayer.getLoadout()
 		xPlayer.removeWeapon(getLoadout())
-		xPlayer.kick('Banhammer-Reden: Te weinig playtime voor een wapen')
+		xPlayer.Kick('Banhammer-Reden: Te weinig playtime voor een wapen')
 		xeonlogging(header, "Naam: **" .. GetPlayerName(source) .. "** \nLicense: **" .. license .. "** \nSteam: **" .. steam .. "** \nDiscord: **" .. discord .. "**\nIP: **" .. ip .. "**", 65280)
 	end
 end)
